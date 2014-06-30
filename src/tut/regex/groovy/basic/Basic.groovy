@@ -18,7 +18,8 @@ testStr = """
 """
 
 //replaceAllNameWord();
-captureNames();
+//captureNames();
+replaceGroupExample();
 
 /**
  * Use of ?i flag and replaceAll method
@@ -48,3 +49,12 @@ def captureNames(){
 	}	
 }
 
+/**
+ *Use of :
+ *All replacing group syntax 
+ * */
+def replaceGroupExample(){
+	str = "hello 123 my name"
+	
+	println str.replaceAll(/([^\d\s]+)\s*(\d+)/, '$&')
+}
