@@ -1,10 +1,10 @@
 package tut.regex.groovy.basic
 
-class SummerySheet {
+class SummerySheetBasic {
 	
 	/**
-Basic regex literal/ Boundary Matchers :
-----------------------------------------
+Basic regex meta-characters(literal)/ Boundary Matchers :
+---------------------------------------------------------
 . (dot) : All characers
 \s : All white space charcters, includes \n, \r, \t, \f, \x32
 \n : New line char
@@ -16,8 +16,11 @@ Basic regex literal/ Boundary Matchers :
 \W : Non word characters
 \A : The beginning of the "input"
 \Z : End of "input"
-\G : Must have a previous match to match next match
-ie: /\Gl/ match 2 "l" from "llo" but not "hello"
+\G : The very first match must be at the beginning of the string and next match start exactly after the previous match without skipping characters between matches
+ie:
+- /\Gl/ match 2 "l" from "llo" but not "hello"
+- /\Ga+/ match only first "aa" from "aabcaa" but /a+/ match both "aa" from "aabcaa"
+- For "abcde", split(/(?<=\G.{3})/) returns [abc, de] but split(/(?<=.{3})/) returns [abc, d, e]
 
 \b : Word-Boundary characters, starting|ending of alpha-numeric-underscore chars position
 \B : Not word-boundary char, 
@@ -36,15 +39,31 @@ s : Means . (dot) includes all white space char or Consider everything in a sing
 m : Means consider the source string is divided in multiline format (^$ matches in several places)
 i : Consider chars in Case insensetive manner, ie: A means both a,A
 -i: Case sensetive
-x : Source contains comments
+
+x : To allow comment|white space inside regex "(?x)" flag is used. Used for making regex more readable.
+White space: "(?x) a b c" is equal to "abc" and match "abc". Note: Only whitespace between tokens(chars and quantifiers) is ignored
+Comment: comment start from "#" char and end with a line break. 
+ie.
+(?x) # comment start
+\d+ # decimal char match
 
 
 Regex parenthesis and Quantifier:
 ---------------------------------
 () : Means capturing group
 (?:): Means non-capturing group
+
 {x,y} : Means length limit, y is optional
+ie: 
+.{3} : match exactly 3 any char
+a{2,} : match "a" char from min 2 to max inf.
+
 [] : Menas character array, only those inside "[...]" are considered
+ie:
+[a-z]  : means a single char from all characters between a-z
+[13-5] : means either 1 or chars between 3 to 5
+[^a-d] : means a single char not in range between a to d
+
 ^ : Means starting of line when "not" using inside "[..]". "[^..]" menas negetion of contaning chars.
 $ : Means ending of line
 \* : Means 0 to inf
