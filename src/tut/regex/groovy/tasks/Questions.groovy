@@ -7,6 +7,7 @@ class Questions {
 	 */
 
 /*
+[1/7/2014 - 6/7/207]
 
 1. Count duplicate words in a sentence|file|string block input.
 in : "he he goes to school"
@@ -44,6 +45,8 @@ in : p out: uniqiue
 7. Find sum of weight units in "mg" unit. 
 in : "1kg 2gm 200mg + 5kg 5gm 20mg" out: xyz mg
 
+[7/7/2014]
+
 8. Split a string into parts of 3 chars in each part.
 in : "abcd3ef785g" out: [abc, d3e, f78, 5g]
 
@@ -52,9 +55,17 @@ in : 1000 out: 1,000
 in : -10000 out: -10,000
 in : -1340000.5000 out: -1,340,000.500
 
+[8/7/2014]
+
+10. Validate "Day and month" format
+in : 2/29 out: invalid
+in : 1/30 out: invalid
+
+11. Only match constant in a set using "char set intersection"
+
 
 Status:
-- Unfinished: 9
+- Unfinished: 9,10,11
 - Problems: 6
 
 */

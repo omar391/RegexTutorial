@@ -21,7 +21,6 @@ class Answers {
 	}
 
 	def q7_sumOfWeightUnits(String str){
-		//def number = str =~ /(\d+)\s*([a-z]+)/
 		def splitLine = str =~ /[^\+]+/
 		long res = 0
 
@@ -32,11 +31,9 @@ class Answers {
 			(0..<number.count).each{
 				if(number[it][2] == 'kg'){
 					res += Integer.parseInt(number[it][1])*1000*1000
-					println "$res"
 				}
 				else if(number[it][2] == 'gm'){
 					res += Integer.parseInt(number[it][1])*1000
-					println Integer.parseInt(number[it][1])*1000
 				}
 				else(number[it][2] == 'mg')
 				res += Integer.parseInt(number[it][1])
@@ -44,7 +41,6 @@ class Answers {
 		}
 		println "$res"
 	}
-
 
 	def q6_uniqueHtmlTagBlockFinder(String tag){
 		def str ="""<div name ="sdsd">

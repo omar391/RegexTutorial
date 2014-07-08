@@ -5,14 +5,14 @@ class SummerySheetBasic {
 	/**
 Basic regex meta-characters(literal)/ Boundary Matchers :
 ---------------------------------------------------------
-. (dot) : All characers
-\s : All white space charcters, includes \n, \r, \t, \f, \x32
+. (dot) : All characters
+\s : All white space characters, includes \n, \r, \t, \f, \x32
 \n : New line char
 \t : Tab char
-\S : All "non" white space charcters
+\S : All "non" white space characters
 \d : All decimal char
 \D : Non decimal char
-\w : Word caracters, only Alpha-numeric chars only
+\w : Word characters, only Alpha-numeric chars only
 \W : Non word characters
 \A : The beginning of the "input"
 \Z : End of "input"
@@ -36,9 +36,9 @@ Regex flags | modifiers:
 ------------------------
 Writing syntax: (?flags)main_regex
 s : Means . (dot) includes all white space char or Consider everything in a single line
-m : Means consider the source string is divided in multiline format (^$ matches in several places)
-i : Consider chars in Case insensetive manner, ie: A means both a,A
--i: Case sensetive
+m : Means consider the source string is divided in multi-line format (^$ matches in several places)
+i : Consider chars in Case insensitive manner, ie: A means both a,A
+-i: Case sensitive
 
 x : To allow comment|white space inside regex "(?x)" flag is used. Used for making regex more readable.
 White space: "(?x) a b c" is equal to "abc" and match "abc". Note: Only whitespace between tokens(chars and quantifiers) is ignored
@@ -47,41 +47,57 @@ ie.
 (?x) # comment start
 \d+ # decimal char match
 
+- Flags can be used inside regex. ie. /(?i)Ab(?-i)Ab/, first "Ab" is case insensitive while next one is sensitive.
+- Modifiers span: syntax: /~no|prev flags are active here~ (?flag: regex) ~no|prev flags are active here~/ 
+  ie. /(?i)cl(?-i)c(?i)cl/ is equivalent to /(?i)cl(?-i:c)cl/
+
 
 Regex parenthesis and Quantifier:
 ---------------------------------
 () : Means capturing group
 (?:): Means non-capturing group
 
+* : Means 0 to inf
++ : Means 1 to inf
+? : Means optional. ie. /qb?/ will match "q" and "qb"
+
 {x,y} : Means length limit, y is optional
 ie: 
 .{3} : match exactly 3 any char
 a{2,} : match "a" char from min 2 to max inf.
 
-[] : Menas character array, only those inside "[...]" are considered
+[] : Means "character class", only those inside "[...]" are considered
 ie:
 [a-z]  : means a single char from all characters between a-z
 [13-5] : means either 1 or chars between 3 to 5
-[^a-d] : means a single char not in range between a to d
 
-^ : Means starting of line when "not" using inside "[..]". "[^..]" menas negetion of contaning chars.
-$ : Means ending of line
-\* : Means 0 to inf
-+ : Means 1 to inf
+^ : Means starting of line when "not" using inside "[..]". Its position is after '\n'
+$ : Means ending of line. Its position is before '\n'
+ie: \n^..$\n
 
 
- Lazy Quantifier:
----------------------
-?: Not greedy, used after {}+*
+Char class negation:
+--------------------
+[^a-d] : means a single char that is not in the range between a to d
+[x^] : No negation, So for negation to occur "^" char must the first char in char class: [..]
+
+
+ Lazy|Reluctant|Non-greedy Quantifier:
+--------------------------------------
+?: Not greedy, used after these 4 group: {}, +, *, ?
+ie.
+/a+?/ match 3 "a" matches in "aaa" while /a+/ match only 1 match as "aaa"
+
 
 Logical:
 ----------
-| : Means OR, x|y
+| : Means OR. ie. /x|y/ will match 2 matches as "x" and "y" in "axby"
 
 
 Regex Grouping and replace :
 ----------------------------
-$n : For "replacing" only, means nth non-pa­ssive group. ie. $2 : "­xyz­" in /^(abc­(xy­z))$/ || $1 : "­xyz­" in /^(?:a­bc)­(xyz)$/
+$n : For "replacing" only, means nth non-pa­ssive group. 
+ie. $2 : "­xyz­" in /^(abc­(xy­z))$/ || $1 : "­xyz­" in /^(?:a­bc)­(xyz)$/
 (((x)(y))) : Nested capturing, groups are numbered based on left-right parenthesis starting priority
 
 
@@ -92,7 +108,7 @@ Back-references :
 
 Unicode Character Properties:
 -----------------------------
-Useage : 
+Usage : 
 \p{prop} : Matching single char belong to a particular category
 \P{prop} : Single char, "Not" matching to a particular category
 list:
@@ -100,6 +116,18 @@ list:
 \p{L} : All letter
 \p{Ll} : LOWERCASE_LETTER
 \p{Lu} : UPPERCASE_LETTER
+
+
+Some basic reviews:
+-------------------
+([a-d])+ : takes only last match in the group but match all that it can
+ie. For "abcd", it will have 1 match and 4 group overwritten successively. So it will only contain the last group as regex only denotes 1 group and that will contain "d".
+match: abcd
+Group(1) : d
+
+(q)?b\1 : back ref failed group for str "b"; (q), doesn't exist so no \1
+(q)? : non-participating
+(q?) : participating but capturing nothing
 
 
 Regex methods:
@@ -111,6 +139,5 @@ Note: For considering a string as a regex statement, we need to use either '/str
 2. replace("","") : tkes string as param
 3. replaceAll("","") : takes regex as param
 4. group(n): Return nth matcher group.
-
 */
 }
