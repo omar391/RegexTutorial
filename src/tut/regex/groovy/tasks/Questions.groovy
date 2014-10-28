@@ -63,10 +63,38 @@ in : 1/30 out: invalid
 
 11. Only match constant in a set using "char set intersection"
 
+12. Match all odd numbers in a string containing both numbers and non numbers
+in: abcd12XY15c1552d13 out:15,13
+
+13.Match all words where 1st and lst char is same
+in: all ala imi out: ala imi
+
+[10/7/2014]
+14.Match all words that contain atleast one same uppercase and a lowercase letter
+in: "Mam Did You tesT alL Students"
+out: "Mam Did tesT alL Students"
+
+15. Match all strings/words that have exactly 3 'b' in total
+in: "abba abbab baba" 
+out: "abbab"
+
+[11/7/2014]
+16.Match all these words where there will be no communicative chars
+in:ammar ami out: ami
+
+[16/7/2014]
+18.Match all string(words)where theres no substring "ab"
+in abad acdd adabdd
+out acdd
+
+[17/07/2014
+19.Match all words that have exactly one double letter in them.
+in: acab aabcb ababaa bb
+out: aabcb bb
 
 Status:
-- Unfinished: 9,10,11
-- Problems: 6
+- Unfinished: 10
+- Problems:  
 
 */
 }
