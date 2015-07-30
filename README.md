@@ -1,11 +1,11 @@
-![Untitled.png](https://bitbucket.org/repo/rAMBE5/images/2390767222-Untitled.png)
+![Untitled.png](http://i62.tinypic.com/2yz0ajb.jpg)
 
 This is a complete tutorial for learning Regular expression in Groovy/Java containing examples, test questions and their related answers.
 
 **Repo clone link:**
  
-* HTTPS:  https://omar391@bitbucket.org/omar391/groovyregex.git
-* SSH: git@bitbucket.org:omar391/groovyregex.git
+* HTTPS:  https://github.com/omar391/GroovyRegex.git
+* SSH: git@github.com:omar391/GroovyRegex.git
 
 
 
