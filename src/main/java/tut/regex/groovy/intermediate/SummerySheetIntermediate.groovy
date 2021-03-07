@@ -28,8 +28,8 @@ Character class intersection (common in set):
 Only match chars common in all sets
 Syntax: [set1 && set2 .. && setn]
 ie. 
-[a && ma] : only match "a"
-[a-d && [^b-d]] : only match "a"
+[a&&ma] : only match "a"
+[a-d&&[^b-d]] : only match "a"
 
 */
 }

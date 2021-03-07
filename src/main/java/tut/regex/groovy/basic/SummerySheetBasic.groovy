@@ -16,11 +16,13 @@ Basic regex meta-characters(literal)/ Boundary Matchers :
 \W : Non word characters
 \A : The beginning of the "input"
 \Z : End of "input"
-\G : The very first match must be at the beginning of the string and next match start exactly after the previous match without skipping characters between matches
+\G : The end of the previous match
+	 (The very first match must be at the beginning of the string and next match start exactly after the previous match without skipping characters between matches)
 ie:
 - /\Gl/ match 2 "l" from "llo" but not "hello"
 - /\Ga+/ match only first "aa" from "aabcaa" but /a+/ match both "aa" from "aabcaa"
 - For "abcde", split(/(?<=\G.{3})/) returns [abc, de] but split(/(?<=.{3})/) returns [abc, d, e]
+[Details explanation: https://www.bennadel.com/blog/2018-using-the-regular-expression-boundary-match-g-to-find-the-end-of-the-previous-match.htm ]
 
 \b : Word-Boundary characters, starting|ending of alpha-numeric-underscore chars position
 \B : Not word-boundary char, 
